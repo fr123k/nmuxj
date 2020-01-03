@@ -1,0 +1,3 @@
+cloudbees-folder
+job-dsl
+pipeline-model-definition

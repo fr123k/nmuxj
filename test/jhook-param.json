@@ -1,0 +1,9 @@
+{
+    "ctx":"provision",
+    "job":"provision-redis",
+    "jobParams":
+    {
+        "SERVER":"redis-1",
+        "revision":"origin/master"
+    }
+}

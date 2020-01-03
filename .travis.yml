@@ -1,0 +1,20 @@
+sudo: required
+
+env:
+  - IMAGE_NAME="nmuxj"
+
+services:
+- docker
+
+before_install:
+- cd jenkins
+- make denkins
+
+script:
+- cd ..
+- make build
+
+after_success:
+- make travis
+- COMPILE_RESULT=0 ; make test-hook || COMPILE_RESULT=$?; expr $COMPILE_RESULT != 0
+- [ $COMPILE_RESULT -ge 2 ] && echo "makefile error"
