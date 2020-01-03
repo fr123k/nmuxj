@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/fr123k/nmuxj.svg?branch=master)](https://travis-ci.com/fr123k/nmuxj)
+
 # nmuxj
 
 ## Story
