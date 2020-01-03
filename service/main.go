@@ -149,7 +149,7 @@ func startJenkinsJob(cfg Configuration, jHook JenkinsHook) {
 	req.SetBasicAuth(cfg.JenkinsUser, cfg.JenkinsToken)
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Error calling Jenkins '%s'\n", err)
 		return
 	}
 	bodyText, err := ioutil.ReadAll(resp.Body)

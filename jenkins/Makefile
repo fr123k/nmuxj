@@ -3,8 +3,9 @@ export IMAGE="denkins"
 build: ## Build the jenkins in docker image.
 	docker build -t $(IMAGE) -f Dockerfile .
 
-denkins: build ## Start the jenkins in docker container short denkins. 
-	docker run -d -p 8888:8080 ${IMAGE}
+denkins: build ## Start the jenkins in docker container short denkins.
+	#docker network create --subnet=172.18.0.0/16 mynet123
+	docker run -d -p 8888:8080 --name denkins --rm ${IMAGE}
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## Print this help.

@@ -16,5 +16,4 @@ script:
 
 after_success:
 - make travis
-- COMPILE_RESULT=0 ; make test-hook || COMPILE_RESULT=$?; expr $COMPILE_RESULT != 0
-- [ $COMPILE_RESULT -ge 2 ] && echo "makefile error"
+- make test-hook || travis_terminate 1

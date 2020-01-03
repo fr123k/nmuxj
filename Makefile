@@ -14,10 +14,10 @@ build: ## Package the infra-hook go application into a go binary docker image.
 	docker build -t $(IMAGE) -f Dockerfile .
 
 local: build ## Build the provision hook service and start it
-	$(DOCKER_COMMAND_LOCAL) -it -e JENKINS_TOKEN="$(token)" $(IMAGE)
+	$(DOCKER_COMMAND_LOCAL) -it -e JENKINS_TOKEN="$(token)" --name nmuxj --rm $(IMAGE)
 
 travis: build ## Build the provision hook service and start it
-	$(DOCKER_COMMAND_LOCAL) -d -e JENKINS_TOKEN="$(token)" $(IMAGE)
+	$(DOCKER_COMMAND_LOCAL) -d -e JENKINS_SERVER="http://$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'):8888" -e JENKINS_TOKEN="$(token)" --name nmuxj --rm $(IMAGE)
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## Print this help
@@ -28,9 +28,11 @@ jenkins:
 
 test-hook:
 	sleep 20
+	docker logs $(shell docker ps -f ancestor=denkins -q)
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-param.json localhost:8080/provision/${time}/group/redis/total/2/vm/1
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-param.json localhost:8080/provision/$(time)/group/redis/total/2/vm/2
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-noparam.json localhost:8080/provision/$(time)/group/elasticsearch/total/1/vm/1
+	docker logs $(shell docker ps -f ancestor=nmuxj -q)
 	sleep 20
-	@curl -s http://admin:admin@localhost:8888/job/provision-redis/lastBuild/api/json | jq -r .result
-	@curl -s http://admin:admin@localhost:8888/job/provision-elasticsearch/lastBuild/api/json | jq -r .result
+	@curl -s http://localhost:8888/job/provision-redis/lastBuild/api/json | jq -r .result | grep SUCCESS
+	@curl -s http://localhost:8888/job/provision-elasticsearch/lastBuild/api/json | jq -r .result | grep SUCCESS
