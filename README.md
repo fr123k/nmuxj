@@ -54,5 +54,5 @@ make build
 
 ## TODO
 
-[x] build jenkins docker container with bootstrap job
-[x] create the example jenkins jobs with bootstrap job
+ * ~~build jenkins docker container with bootstrap job~~
+ * ~~create the example jenkins jobs with bootstrap job~~

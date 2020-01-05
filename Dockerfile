@@ -61,11 +61,10 @@ ARG GIT_COMMIT=undefined
 ARG BUILD_DATE=undefined
 
 LABEL org.label-schema.build-date="$BUILD_DATE"
-LABEL org.label-schema.name="infra-hook"
+LABEL org.label-schema.name="nmuxj"
 LABEL org.label-schema.description="Webhook for cloud init to trigger jenkins jobs"
-LABEL org.label-schema.vcs-url=""
+LABEL org.label-schema.vcs-url="https://github.com/fr123k/nmuxj"
 LABEL org.label-schema.vcs-ref="$GIT_COMMIT"
-LABEL org.label-schema.vendor=""
 LABEL org.label-schema.version="$APP_VERSION"
 LABEL org.label-schema.schema-version="1.0"
 LABEL go-version="$GO_VERSION"
