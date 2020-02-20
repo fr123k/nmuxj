@@ -56,3 +56,8 @@ make build
 
  * ~~build jenkins docker container with bootstrap job~~
  * ~~create the example jenkins jobs with bootstrap job~~
+ * use the jocker docker image instead of the jocker image in the jenkins folder
+
+## History
+
+* 20.02.2020 push docker image to dockerhub

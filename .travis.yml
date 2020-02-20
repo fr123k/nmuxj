@@ -1,19 +1,18 @@
 sudo: required
-
 env:
-  - IMAGE_NAME="nmuxj"
-
+  global:
+  - secure: NpsLdBMplNNTGiAgenC790TPh6hFdhff86ypDYmOLZmNRdWjHkvf08D78W+EN3LRbQqgT+SXTu5yaNaU8C8oP5ok5etTCj/OVkuLVrfP7DpqtYwci8a349Wg3Rqwm2YNsrAZfORunL6mLq1DPY42K6UMqVKZMYO4uCmp+qU19CT2Vg3rodFwBkY39YSYcajvtqWPEBOt7hzqG3ghmMex2o9uxfOZsIy6gin775nCY2/2ahZtoeG0nY6ltxFW6qrZZURorBkkX5jBRXnZss7shFpHc+X5WzXzn4aK5F1pD7RaouVqWB8BfQOfswb+VPatRbKg7ICuZpxDE0b4byJqt0afIqL+koCojIDKFxqOwW/9TlMrOD/4Q1R2xozy7x7y5D56hrgNSt2Xhb/s81/e3BNYVCu1UKCktpKU7aM4OQ1bY7kx2BEalFYiXRGs+d61UX5yE75EG8cYacXCqgNKhpY6SscKCY0TRf78RASYtkuQ0omTbASPsN6f2J0NhL0+h/9fGlf7dW/yd0QBMQSS2m89XKbcTmYWqKOx5PtqzbLkTg7IjNoL5CR551h0v8d18KdtcPpDgpJWMv1FvEypxnfe7RRTXeV3CD1N1M5kw4ed+0hRe1yFgqW8GvkP7jaB73f0wUSf84m9Em2tq1LwQ0B2bPzHXuJ4N8IP4bXK6+I=
+  - secure: mcWuz/L9HJQfW5O46eVAy2EZNqze71hl9MBiF5FVaHmw2/7h0kW2Q5g3YlmVAh+NQ1+FciDKcwT0qG2gOItboPGyOX1lE1wNm47fwWTLzSSSstm6Ze2Cq/iADbBnHyeAQ+d/vxAUmChOLCi02Mz3TnXO1igakGWNhIW7F+FW3EdJfPnuK6mYaIV462FmXVK+6TA4O5MDKjgupjJaGepO8IqnYqXYuvau4wXfj42UT/IPAOfjCOimLEKbiFeg3hzqljz/TlvyIJ2FhCSbC5cBidDr8fsJi73yCZzdrfMv6YejXoU4zHsqk/Ep9AO/0N91A/rHTJmAcF1IPopW5cCDBKd8BERqAJol57o4Q43rSAi1uEv0auDYJQSho7AzlFU48BF+Z815O80zpdDatAOUgNYNVKt09fAdc3YyxlXvVm9oVPzj2AutYZan0Th71lC9XFN0HWGzlByZfHNU8aoCKWiOd/cCdf0aQhtYJ8tAdVTblHlUiaCfYzVFRVMbOOfhzkDijl74x9joYJuYXiPEox9pcxLWCSRP9ve/PjN5EJlPZ1yEjmd5x4RdimJXSlADflv+b1wfQpKZZTNIO73/Qr5huX7lLZZW5qSqGTC5sQ9vP94qFkOf8r6ad14qcObRX1dGiHrTQmQMlfjBGGvrWt3tsvbtJdwIsQRh0KcLjkM=
 services:
 - docker
-
 before_install:
 - cd jenkins
 - make denkins
-
 script:
 - cd ..
 - make build
-
 after_success:
 - make travis
 - make test-hook || travis_terminate 1
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- make release

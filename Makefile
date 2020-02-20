@@ -1,7 +1,10 @@
 .PHONY: build shell jenkins local
 
 time := $(shell date +'%Y%m%d-%H%M%S')
-export IMAGE="nmuxj"
+VERSION=1.0
+export NAME=fr123k/nmuxj
+export IMAGE="${NAME}:${VERSION}"
+export LATEST="${NAME}:latest"
 
 export DOCKER_COMMAND_LOCAL=docker run \
 		-e JENKINS_SERVER="http://host.docker.internal:8888" \
@@ -12,6 +15,10 @@ export DOCKER_COMMAND_LOCAL=docker run \
 
 build: ## Package the infra-hook go application into a go binary docker image.
 	docker build -t $(IMAGE) -f Dockerfile .
+
+release: build ## Push docker image to docker hub
+	docker tag ${IMAGE} ${LATEST}
+	docker push ${NAME}
 
 local: build ## Build the provision hook service and start it
 	$(DOCKER_COMMAND_LOCAL) -it -e JENKINS_TOKEN="$(token)" --name nmuxj --rm $(IMAGE)
@@ -28,11 +35,11 @@ jenkins:
 
 test-hook:
 	sleep 20
-	docker logs $(shell docker ps -f ancestor=denkins -q)
+	docker logs $(shell docker ps -f name=denkins -q)
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-param.json localhost:8080/provision/${time}/group/redis/total/2/vm/1
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-param.json localhost:8080/provision/$(time)/group/redis/total/2/vm/2
 	curl -H "Content-Type:application/json" -H "Authorization:Bearer MTIzNA==" -d @test/jhook-noparam.json localhost:8080/provision/$(time)/group/elasticsearch/total/1/vm/1
-	docker logs $(shell docker ps -f ancestor=nmuxj -q)
+	docker logs $(shell docker ps -f name=nmuxj -q)
 	sleep 20
 	@curl -s http://localhost:8888/job/provision-redis/lastBuild/api/json | jq -r .result | grep SUCCESS
 	@curl -s http://localhost:8888/job/provision-elasticsearch/lastBuild/api/json | jq -r .result | grep SUCCESS
