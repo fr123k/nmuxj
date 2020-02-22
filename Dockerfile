@@ -2,20 +2,20 @@
 # Default to Go 1.12
 ARG GO_VERSION=1.12
 
-# First stage: code and flags.
-# This stage is used for running the tests with a valid Go environment, with
-# `/vendor` directory support enabled.
-FROM golang:${GO_VERSION} AS code
+# # First stage: code and flags.
+# # This stage is used for running the tests with a valid Go environment, with
+# # `/vendor` directory support enabled.
+# FROM golang:${GO_VERSION} AS code
 
-# Set the environment variables for the commands passed to the stage when using
-# `docker build --target code`. Leave CGO available for the race detector.
-ENV GOFLAGS=-mod=vendor
+# # Set the environment variables for the commands passed to the stage when using
+# # `docker build --target code`. Leave CGO available for the race detector.
+# ENV GOFLAGS=-mod=vendor
 
-# Set the working directory outside $GOPATH to enable the support for modules.
-WORKDIR /infra-hook
+# # Set the working directory outside $GOPATH to enable the support for modules.
+# WORKDIR /infra-hook
 
-# Import the code from the context.
-COPY service ./service
+# # Import the code from the context.
+# COPY service ./service
 
 # Second stage: build the executable
 FROM golang:${GO_VERSION}-alpine AS builder
@@ -41,7 +41,8 @@ ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor
 WORKDIR /infra-hook
 
 # Import the code from the first stage.
-COPY --from=code /infra-hook ./
+# COPY --from=code /infra-hook ./
+COPY service ./service
 
 # Build the executable to `/app`. Mark the build as statically linked and
 # inject the version as a global variable.

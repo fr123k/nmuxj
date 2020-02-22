@@ -1,42 +1,21 @@
-# jenkins in docker
+# Usage of jocker
 
 ## Introduction
 
-Mini jenkins docker container that run jenkins as code. The jenkins is configured with
-a init.groovy script that does things like.
-
-* disable CSRF protection (remote calls)
-* create and run the seed job (`Jenkins/Configure`)
-* setup the user base (admin/admin user with api token)
-
-The seed job `Jenkins/Configure` is defined in 'dsl/bootstrap.groovy' and creates the
-following 3 jobs.
-
-* `Jenkins/Configure`
-
-The seed job that can create all the other jobs. For a simple setup the seed job does nothing. The test job are defined inside the seed job definition.
+This repository is using the [jocker](https://github.com/fr123k/jocker) docker image
+to start a jenkins master for testing the jenkins job remote execution.
 
 * `provision-redis`
 
-The test job the simulate the provision of two redis servers.
+The test job that simulate the provision of two redis servers.
 
 * `provision-elasticsearch`
 
-The test job the simulate the provision of one elasticsearch server.
-
-## Build
-
-To build the jenkins in docker image run the listed command below.
-
-```bash
-make build
-```
-
-
+The test job that simulate the provision of one elasticsearch server.
 
 ## Usage
 
 ```bash
-make denkins
+make jocker
 ```
 [Jenkins](http://localhost:8888/)

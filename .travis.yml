@@ -1,4 +1,3 @@
-sudo: required
 env:
   global:
   - secure: NpsLdBMplNNTGiAgenC790TPh6hFdhff86ypDYmOLZmNRdWjHkvf08D78W+EN3LRbQqgT+SXTu5yaNaU8C8oP5ok5etTCj/OVkuLVrfP7DpqtYwci8a349Wg3Rqwm2YNsrAZfORunL6mLq1DPY42K6UMqVKZMYO4uCmp+qU19CT2Vg3rodFwBkY39YSYcajvtqWPEBOt7hzqG3ghmMex2o9uxfOZsIy6gin775nCY2/2ahZtoeG0nY6ltxFW6qrZZURorBkkX5jBRXnZss7shFpHc+X5WzXzn4aK5F1pD7RaouVqWB8BfQOfswb+VPatRbKg7ICuZpxDE0b4byJqt0afIqL+koCojIDKFxqOwW/9TlMrOD/4Q1R2xozy7x7y5D56hrgNSt2Xhb/s81/e3BNYVCu1UKCktpKU7aM4OQ1bY7kx2BEalFYiXRGs+d61UX5yE75EG8cYacXCqgNKhpY6SscKCY0TRf78RASYtkuQ0omTbASPsN6f2J0NhL0+h/9fGlf7dW/yd0QBMQSS2m89XKbcTmYWqKOx5PtqzbLkTg7IjNoL5CR551h0v8d18KdtcPpDgpJWMv1FvEypxnfe7RRTXeV3CD1N1M5kw4ed+0hRe1yFgqW8GvkP7jaB73f0wUSf84m9Em2tq1LwQ0B2bPzHXuJ4N8IP4bXK6+I=
@@ -7,7 +6,7 @@ services:
 - docker
 before_install:
 - cd jenkins
-- make denkins
+- make jocker
 script:
 - cd ..
 - make build

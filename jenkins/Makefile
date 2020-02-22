@@ -1,11 +1,11 @@
-export IMAGE="denkins"
+export IMAGE="fr123k/jocker"
 
-build: ## Build the jenkins in docker image.
-	docker build -t $(IMAGE) -f Dockerfile .
+jocker: ## Start the jenkins in docker container short jocker.
+	docker pull fr123k/jocker
+	docker run -d -e BOOTSTRAP_SHARED_LIBRARY_GIT_REPO=fr123k/nmuxj -e BOOTSTRAP_SHARED_LIBRARY_GROOVY_FILE=jenkins/dsl/pipeline.groovy -e SEED_BRANCH=${TRAVIS_BRANCH} -p 8888:8080 --name jocker --rm ${IMAGE}
 
-denkins: build ## Start the jenkins in docker container short denkins.
-	#docker network create --subnet=172.18.0.0/16 mynet123
-	docker run -d -p 8888:8080 --name denkins --rm ${IMAGE}
+logs: ## Show the logs of the jocker container
+	docker logs $(shell docker ps -f name=jocker -q) -f
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## Print this help.
