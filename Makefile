@@ -22,10 +22,10 @@ release: build ## Push docker image to docker hub
 	docker push ${NAME}
 
 local: build ## Build the provision hook service and start it
-	$(DOCKER_COMMAND_LOCAL) -it -e JENKINS_TOKEN="$(API_TOKEN)" --name nmuxj --rm $(IMAGE)
+	$(DOCKER_COMMAND_LOCAL) -it -e JENKINS_TOKEN="${API_TOKEN}" --name nmuxj --rm $(IMAGE)
 
 travis: build ## Build the provision hook service and start it
-	$(DOCKER_COMMAND_LOCAL) -d -e JENKINS_SERVER="http://$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'):8888" -e JENKINS_TOKEN="$(API_TOKEN)" --name nmuxj --rm $(IMAGE)
+	$(DOCKER_COMMAND_LOCAL) -d -e JENKINS_SERVER="http://$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'):8888" -e JENKINS_TOKEN="${API_TOKEN}" --name nmuxj --rm $(IMAGE)
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## Print this help
