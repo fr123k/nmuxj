@@ -15,8 +15,8 @@ script:
   - make build
 
 after_success:
+  - ./scripts/jenkins-wait.sh jenkins/job/Setup
   - make travis
-  - sleep 30
   - make test-hook || travis_terminate 1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then make release; fi
