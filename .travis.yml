@@ -1,10 +1,13 @@
-env:
-  global:
-    - secure: NpsLdBMplNNTGiAgenC790TPh6hFdhff86ypDYmOLZmNRdWjHkvf08D78W+EN3LRbQqgT+SXTu5yaNaU8C8oP5ok5etTCj/OVkuLVrfP7DpqtYwci8a349Wg3Rqwm2YNsrAZfORunL6mLq1DPY42K6UMqVKZMYO4uCmp+qU19CT2Vg3rodFwBkY39YSYcajvtqWPEBOt7hzqG3ghmMex2o9uxfOZsIy6gin775nCY2/2ahZtoeG0nY6ltxFW6qrZZURorBkkX5jBRXnZss7shFpHc+X5WzXzn4aK5F1pD7RaouVqWB8BfQOfswb+VPatRbKg7ICuZpxDE0b4byJqt0afIqL+koCojIDKFxqOwW/9TlMrOD/4Q1R2xozy7x7y5D56hrgNSt2Xhb/s81/e3BNYVCu1UKCktpKU7aM4OQ1bY7kx2BEalFYiXRGs+d61UX5yE75EG8cYacXCqgNKhpY6SscKCY0TRf78RASYtkuQ0omTbASPsN6f2J0NhL0+h/9fGlf7dW/yd0QBMQSS2m89XKbcTmYWqKOx5PtqzbLkTg7IjNoL5CR551h0v8d18KdtcPpDgpJWMv1FvEypxnfe7RRTXeV3CD1N1M5kw4ed+0hRe1yFgqW8GvkP7jaB73f0wUSf84m9Em2tq1LwQ0B2bPzHXuJ4N8IP4bXK6+I=
-    - secure: mcWuz/L9HJQfW5O46eVAy2EZNqze71hl9MBiF5FVaHmw2/7h0kW2Q5g3YlmVAh+NQ1+FciDKcwT0qG2gOItboPGyOX1lE1wNm47fwWTLzSSSstm6Ze2Cq/iADbBnHyeAQ+d/vxAUmChOLCi02Mz3TnXO1igakGWNhIW7F+FW3EdJfPnuK6mYaIV462FmXVK+6TA4O5MDKjgupjJaGepO8IqnYqXYuvau4wXfj42UT/IPAOfjCOimLEKbiFeg3hzqljz/TlvyIJ2FhCSbC5cBidDr8fsJi73yCZzdrfMv6YejXoU4zHsqk/Ep9AO/0N91A/rHTJmAcF1IPopW5cCDBKd8BERqAJol57o4Q43rSAi1uEv0auDYJQSho7AzlFU48BF+Z815O80zpdDatAOUgNYNVKt09fAdc3YyxlXvVm9oVPzj2AutYZan0Th71lC9XFN0HWGzlByZfHNU8aoCKWiOd/cCdf0aQhtYJ8tAdVTblHlUiaCfYzVFRVMbOOfhzkDijl74x9joYJuYXiPEox9pcxLWCSRP9ve/PjN5EJlPZ1yEjmd5x4RdimJXSlADflv+b1wfQpKZZTNIO73/Qr5huX7lLZZW5qSqGTC5sQ9vP94qFkOf8r6ad14qcObRX1dGiHrTQmQMlfjBGGvrWt3tsvbtJdwIsQRh0KcLjkM=
+os: linux
+arch: arm64-graviton2
 
 services:
   - docker
+
+env:
+  global:
+    - secure: lx89M76RhiMdsEZCzZrOgTh2Y5DTdyTTsxSnxnYMLxqf6iqB1kpgbZzbnHMIPF0oM5hjTWn+/+FdePbcmq/ZSXoYJyuDR67VOd762PTG9vochocgROyydWLZz3Mce/YG/8jy91azRm1MpXGqwSx8nFRtrC3hkUf6bu5sIIqUj6mv2911DOFS7N3RjNL7L+SCQR5A1tEMT/bbAlkJbH4qRBy1QO1xK7rYT0qFoCuf/Fpet31CubUgAB2YAdP6rAIBT4xpSw1S2m2WhY92oGvKvKkF2Lu00J25cpvEuuWRo8nOR8sRNZSVJGccna7e939qiA2vumkFL+sDt+UJk7MUB3V4uG6Qttgpv8O+ITz/gUIeO+44q+U8WHvaBkO0co3jB1zjALKMYLW2TsthCBnz8nrN7KGk2JWtNK8XJ5dfPaA5OvNVr2qAab8Pl2bBDrb2qGfOtxlyhmE807ZOm6Io/fz96f/xmaeVRwsFzReeuo6IJzaLzRWGhqNoTpRLek0NFmbPL/DKru4bPLN0z/OwPE11d5CYvOst9XVK8DtDE09k9YhOhbZpiDcbISrzr5fJoaIDqW2dZTwRoRvOHAOLCkfx8PppNnIbgK0s3PVuvbgSFN49jlgu+aBVSz8QXsuweoyxhlZWiwcsxHIHPwlGrTSBcbr+HsGe9hYJK19sCU4=
+    - secure: rwr1WBqHs6PGlFPrAJ+IlQJTxn7DAyRYlccLkGSWG1/O0TfpGi7fuqRwnVT1u3g6Jjw1K3q25xBgX1Pv6UbwUqhPGP0H/+IKKY5zg7xYXU32H9Scvt/pjHSv2RNp3RpNVu4NF0CW5IL9WgaABTPv8f8UUjQAdSmgRqNscC0xBQKoI637EdTCnw0dsrZ56M3vudWewyhtNH40yakG6FUYlo4VFENoPHe0ai7YGgJHbelua7NrdZjKqo4zcrQq+WQU35mJWwfkliCh63ux9GQVe0xjgQJktbVmRiuBhhIj1yIPHg9+iiLuf59NqZarG5R/yqtqSDdKtaa3KatVKQf0//IZ9jKDaQ+WByNXRIdlQMdksITGvhbLBh5pikTc5XtAzS+KBchyQHtXuqgPnvGcfP9K6krtBeSPoMuUGAeGyZTxJ28rJsUjxCgOq/dcHC0rruPiz77fTOg2jcikvwYdTm/NiD8ETF2S+NnQq7Ek3ZGwzrZjBp1Njml3QcLnt1AgDtZ0YUATI0BfmgRRauQ0PzsrJV1zFln3dvHLwgDMqnAjd71d62zHAiXjNjsuA+JUVyZcgrzWB4iUH5YN1GO//37TmDYU8OnDGtyqOuedeKtwskNjmnoq/iznAZBZYV2xuJYY3F8Ka4NutwAsnS1WZ09E7q1LNeFlbfnM17J2ggY=
 
 before_install:
   - cd jenkins
@@ -15,8 +18,10 @@ script:
   - make build
 
 after_success:
-  - ./scripts/jenkins-wait.sh jenkins/job/Setup
+  - "./scripts/jenkins-wait.sh jenkins/job/Setup"
   - make travis
   - make test-hook || travis_terminate 1
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then make release; fi
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME"
+    --password-stdin
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then
+    make release; fi
